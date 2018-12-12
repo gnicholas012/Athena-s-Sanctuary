@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class Gemini : MonoBehaviour
 {
-	public int counter = 2;
+//	public int counter = 2;
 
 	public void OnTriggerEnter(Collider other)
 	{
 		GameObject go = other.gameObject;
-		print(go.tag + " found");
 		if(go.tag == "Player" || go.tag == "MainCamera")
 		{
-			print("player colided");
-			if(counter > 1)
+/*			if(counter > 1)
 			{
-				go.transform.Rotate(new Vector3 (0, 180, 0), Space.World);
+				print("old: " + go.transform.rotation);
+				go.transform.rotation *= Quaternion.Euler(0,180f,0);
+				print("new: " + go.transform.rotation);
 				counter--;
 				print("counter: " + counter);
 			}
 			else
 			{
+*/
+				GameObject[] FireToRemove = GameObject.FindGameObjectsWithTag("FireG");
 
-			}
+				foreach(GameObject Fire in FireToRemove)
+				{
+					Destroy(Fire);
+				}
+//			}
 		}
 	}
 }
